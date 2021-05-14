@@ -1,13 +1,12 @@
 import React from 'react'
+import { TestWhereby } from "./TestWhereby"
+
 
 export const App = () => {
   return (
     <div>
       Matilda.
-      <iframe
-  src="https://technigo-test-nkjt.whereby.com/room?embed"
-  allow="camera; microphone; fullscreen; speaker; display-capture"
-></iframe>
+        <TestWhereby/>
     </div>
   )
 }
