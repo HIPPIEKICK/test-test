@@ -11,7 +11,7 @@ export const TestWhereby = () => {
     fetch(`https://test-test-backend.herokuapp.com/rooms/${id}`, { method: 'GET' })
       .then(res => res.json())
       .then(json => setRoom(json))
-  }, [])
+  }, [id])
 
   return (
     <>
