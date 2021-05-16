@@ -1,12 +1,10 @@
 import React from 'react'
-import { TestWhereby } from "./TestWhereby"
-
+import { RoomsList } from 'RoomsList'
 
 export const App = () => {
   return (
     <div>
-      Matilda.
-        <TestWhereby/>
+        <RoomsList/>
     </div>
   )
 }

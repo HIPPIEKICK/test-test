@@ -1,12 +1,16 @@
 import React from "react"
+import { Iframe } from "./Iframe"
 
 
-
-export const TestWhereby = () => {
+export const TestWhereby = (room) => {
+  console.log(room)
   return (
-    <iframe
-      src="https://technigo-test-nkjt.whereby.com/matildaw2dk7e?embed?audio=off?screenshare=off"
-      allow="camera; microphone; fullscreen; speaker; display-capture"
-    ></iframe>
+    <>
+    <p>Room: {room.room.id}</p>
+    <p>Name: {room.room.roomName}</p>
+    <p>Clients: {room.room.numClients}</p>
+      <Iframe src={room.room.roomName}
+      />
+    </>
 )
 }
