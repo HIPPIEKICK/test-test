@@ -6,14 +6,34 @@ import { Link } from "react-router-dom"
 export const RoomsList = () => {
   const [rooms, setRooms] = useState([])
 
+  // useEffect(() => {
+  //   fetch('https://test-test-backend.herokuapp.com/rooms', { method: 'GET' })
+  //     .then(res => res.json())
+  //     .then(json => setRooms(json))
+  // }, [])
+
+  const doTheFetch = () => {
+    fetch(`https://test-test-backend.herokuapp.com/rooms`, { method: 'GET' })
+    .then(res => res.json())
+    .then(json => {
+      setRooms(json)
+      console.log("Now I've fetched again")
+    })
+  }
+
   useEffect(() => {
-    fetch('https://test-test-backend.herokuapp.com/rooms', { method: 'GET' })
-      .then(res => res.json())
-      .then(json => setRooms(json))
-  }, [])
+    doTheFetch()
+
+    const interval = setInterval(() => {
+      doTheFetch()
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    rooms.map(room => (
+    <>
+    <button onClick={() => doTheFetch()}>Refresh</button>
+    {rooms.map(room => (
         <div key={room.id}>
           <p>Room: {room.id}</p>
           <p>numClients: {room.numClients}</p>
@@ -22,7 +42,8 @@ export const RoomsList = () => {
       
           {/* <TestWhereby key={room.id} room={room}/> */}
       </div>
-    ))
-    
+
+    ))}
+    </>
 )
 }
