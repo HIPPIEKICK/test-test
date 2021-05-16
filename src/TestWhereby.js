@@ -1,16 +1,25 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import { Iframe } from "./Iframe"
+import { useParams, Link } from "react-router-dom"
 
 
-export const TestWhereby = (room) => {
-  console.log(room)
+export const TestWhereby = () => {
+  const { id } = useParams()
+  const [room, setRoom] = useState('')
+
+  useEffect(() => {
+    fetch(`https://test-test-backend.herokuapp.com/rooms/${id}`, { method: 'GET' })
+      .then(res => res.json())
+      .then(json => setRoom(json))
+  }, [])
+
   return (
     <>
-    <p>Room: {room.room.id}</p>
-    <p>Name: {room.room.roomName}</p>
-    <p>Clients: {room.room.numClients}</p>
-      <Iframe src={room.room.roomName}
-      />
+      <Link to={"/"}> 🔙</Link>
+      <p>Room: {id}</p>
+      <p>Name: {room.roomName}</p>
+      <p>Clients: {room.numClients}</p>
+      <Iframe src={room.roomName}/>
     </>
 )
 }

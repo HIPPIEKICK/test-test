@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { TestWhereby } from "./TestWhereby"
+import { Link } from "react-router-dom"
 
 
 export const RoomsList = () => {
@@ -13,7 +14,14 @@ export const RoomsList = () => {
 
   return (
     rooms.map(room => (
-      <TestWhereby key={room.id} room={room}/>
+        <div key={room.id}>
+          <p>Room: {room.id}</p>
+          <p>numClients: {room.numClients}</p>
+          <Link to={`/rooms/${room.id}`}>{room.roomName}</Link>
+   
+      
+          {/* <TestWhereby key={room.id} room={room}/> */}
+      </div>
     ))
     
 )
