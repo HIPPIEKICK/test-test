@@ -6,7 +6,7 @@ export const Iframe = (source) => {
   return (
       <iframe
         src={videoURL}
-        allow="camera; microphone; fullscreen; speaker; display-capture"
+        allow="camera; microphone; fullscreen; speaker;"
       ></iframe>
 )
 }
